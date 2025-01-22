@@ -2,36 +2,83 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Comic Sans MS', 'Arial', sans-serif;
-  background-color: #fef9f9; /* Soft pink background */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
+  color: #fff;
   text-align: center;
 }
 
-/* Container for the welcome message */
-h1 {
-  color: #ff6f91; /* Soft rose color */
-  font-size: 3rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin: 0;
-  padding: 1rem;
-}
-
-/* Add some subtle animation */
-h1::after {
-  content: ' 💕';
-  animation: fadeIn 2s infinite alternate;
-}
-
-/* Keyframes for animation */
-@keyframes fadeIn {
+/* Keyframes for animated background */
+@keyframes gradientAnimation {
   0% {
-      opacity: 0.5;
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
   }
   100% {
-      opacity: 1;
+      background-position: 0% 50%;
+  }
+}
+
+/* Welcome message container */
+h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #ffe53b, #ff2525);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnimation 3s ease infinite;
+}
+
+/* Keyframes for glowing text effect */
+@keyframes textAnimation {
+  0% {
+      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5),
+                  0px 0px 20px rgba(255, 85, 85, 0.4),
+                  0px 0px 30px rgba(255, 85, 85, 0.3);
+  }
+  50% {
+      text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7),
+                  0px 0px 30px rgba(255, 85, 85, 0.6),
+                  0px 0px 40px rgba(255, 85, 85, 0.5);
+  }
+  100% {
+      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5),
+                  0px 0px 20px rgba(255, 85, 85, 0.4),
+                  0px 0px 30px rgba(255, 85, 85, 0.3);
+  }
+}
+
+/* Add a floating animation for the welcome message */
+h1::after {
+  content: ' 🌟✨';
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation keyframes */
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2.5rem;
   }
 }
