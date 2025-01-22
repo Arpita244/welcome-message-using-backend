@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-
-
 function App() {
     const [welcomeMessage, setWelcomeMessage] = useState('');
-
     useEffect(() => {
-        // Fetch the welcome message from the backend
         fetch('http://localhost:5000/welcome')
             .then((response) => response.json())
             .then((data) => {
@@ -16,7 +12,6 @@ function App() {
                 console.error('Error fetching welcome message:', error);
             });
     }, []);
-
     return (
         <div>
             <h1>{welcomeMessage}</h1>
